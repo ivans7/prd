@@ -407,7 +407,7 @@ Objects that represent people, groups, and organizational structures.
 | **Definition** | An individual who interacts with the platform as a user, technician, or contact |
 | **Role** | Identifies individuals for assignment, notification, and accountability |
 | **Behavior** | Workflow-governed. Person types and synchronization handling are workflow-configured |
-| **Key Relationships** | Organization, Department, Group, Location, Security Role, Computer (assigned), Incident (requester/assignee) |
+| **Key Relationships** | Organization, Group, Location, Security Role, Computer (assigned), Incident (requester/assignee) |
 
 ### 7.2 Organization
 
@@ -416,18 +416,11 @@ Objects that represent people, groups, and organizational structures.
 | **Definition** | A business entity (company, division, external customer) |
 | **Role** | Groups persons and assets by organizational affiliation; supports multi-tenancy |
 | **Behavior** | Static reference data. Hierarchy and relationship rules may be workflow-extended |
-| **Key Relationships** | Person, Department, Computer, Hardware, Asset, Contract, Vendor, Location, Company Address |
+| **Key Relationships** | Person, Computer, Hardware, Asset, Contract, Vendor, Location, Company Address |
 
-### 7.3 Department
+**Note:** Organization records support hierarchical structure (parent-child relationships) to represent companies, divisions, departments, and teams within a single object class.
 
-| Aspect | Description |
-|--------|-------------|
-| **Definition** | A subdivision within an organization representing a functional or administrative unit |
-| **Role** | Provides finer-grained organizational grouping for routing and reporting |
-| **Behavior** | Static reference data. Organizational hierarchy element |
-| **Key Relationships** | Organization, Person, Cost Center, Location |
-
-### 7.4 Group
+### 7.3 Group
 
 | Aspect | Description |
 |--------|-------------|
@@ -436,7 +429,7 @@ Objects that represent people, groups, and organizational structures.
 | **Behavior** | Static configuration. Membership rules and assignment logic may be automated |
 | **Key Relationships** | Person (members), Incident (assignee), Service Request (assignee), Approval Group |
 
-### 7.5 Location
+### 7.4 Location
 
 | Aspect | Description |
 |--------|-------------|
@@ -445,7 +438,7 @@ Objects that represent people, groups, and organizational structures.
 | **Behavior** | Static reference data. Hierarchy (country/city/building/room) is user-defined |
 | **Key Relationships** | Computer, Hardware, Person, Organization, Stock Room, Equipment |
 
-### 7.6 Company Address
+### 7.5 Company Address
 
 | Aspect | Description |
 |--------|-------------|
@@ -454,7 +447,7 @@ Objects that represent people, groups, and organizational structures.
 | **Behavior** | Static reference data |
 | **Key Relationships** | Organization |
 
-### 7.7 Brand
+### 7.6 Brand
 
 | Aspect | Description |
 |--------|-------------|
@@ -735,6 +728,6 @@ Software Catalog Item (Software Product)
 
 ---
 
-*Document Version: 2.0*
+*Document Version: 2.1*
 *Reference Scope: Platform Business Objects*
 *Total Objects: 64*

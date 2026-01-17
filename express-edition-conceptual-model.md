@@ -32,7 +32,7 @@ Rather than requiring workflow design expertise, Express provides operational wo
 Rather than separating technical configuration (CI) from financial tracking (Asset), Express presents a unified view through **Inventory Items** and **Computers**, reducing the conceptual overhead of dual-object management.
 
 **Out-of-Box Readiness**
-Express is designed to be adoptable with a pre-configured baseline. Pre-built workflows and automation patterns provide a functional starting point while keeping customization within controlled boundaries.
+Express is designed to work immediately after installation with minimal configuration. Pre-built workflows, notifications, and business policies provide functional processes without customization.
 
 ---
 
@@ -40,12 +40,14 @@ Express is designed to be adoptable with a pre-configured baseline. Pre-built wo
 
 Express Edition is not a different product—it is the same platform with a constrained conceptual surface.
 
-### 2.1 Conceptual Foundation
+### 2.1 Technical Foundation
 
-Express is best understood as a constrained projection of the same platform mechanisms:
-- The platform concepts (business objects, relationships, workflow-driven behavior, and integrations) remain consistent.
-- Express constrains *how far* those mechanisms can be customized, emphasizing configuration over workflow engineering.
-- Upgrade expands the exposed conceptual surface (more object classes and deeper workflow customization) while preserving business data and relationships.
+| Aspect | Express Relationship to Platform |
+|--------|--------------------------------|
+| **Codebase** | Single codebase with Enterprise |
+| **Database Schema** | Identical schema |
+| **Differentiation Mechanism** | Feature access restrictions, not separate code |
+| **Upgrade Path** | Database migration preserves all data |
 
 ### 2.2 Projection Mechanisms
 
@@ -58,14 +60,15 @@ Express is formed from Enterprise through three mechanisms:
 | Work Order | **Ticket** |
 | Hardware | **Inventory Item** |
 | Trigger | **Business Rule** |
+| Workflow and Business Logic | **Customization** |
 
 #### Hiding (Not Removing)
 
-Hidden platform object classes are not exposed as part of the Express conceptual surface:
+Hidden objects remain in the database schema but are not exposed in Express:
 
 | Hidden Category | Objects |
 |-----------------|---------|
-| **ITIL Service Desk** | Incident, Problem, Service Request |
+| **ITIL Service Desk** | Incident, Problem, Service Request, My Tickets, All Tickets views |
 | **Project Management** | Project, Project Task |
 | **Service Management** | Service, SLA, Service Catalog Item |
 | **Advanced CMDB** | Document, Configuration, Network |
@@ -83,7 +86,7 @@ Express includes components that are separate in Enterprise:
 
 | Component | Express Status |
 |-----------|---------------|
-| **Inventory data population capabilities** | Inventory can be populated through multiple methods (manual, import, integrations, network discovery, agent-based inventory, external tools). No inventory tool is required or conceptually privileged by the platform. |
+| **Network Inventory** | Built-in module based on Alloy Discovery technology |
 
 ---
 
@@ -98,7 +101,9 @@ Express defines four classes of objects based on customization depth. This is an
 | **Class 1** | No customization | Discovered Installations, Manufacturers |
 | **Class 2** | Lookups only | Organization, Location, Vendor |
 | **Class 3** | Lookups + Notifications + Templates | Computer, Inventory Item, Purchase Order, Contract, Software License, Knowledge Base Article, Person, Library Item |
-| **Class 4** | Full Express customization | Ticket, Change Request, Approval Request |
+| **Class 4** | Full Express customization | Ticket, Change Request, Approval Request (limited)* |
+
+\* Approval Request has limited Class 4: supports only Escalation Policy (no Routing, Prioritization, Additional Automation) and no Business Rules.
 
 ### 3.2 Customization Capabilities by Class
 
@@ -129,21 +134,52 @@ Ticket, Change Request, and Approval Request have the highest customization leve
 
 Approval Request supports only Escalation Policy.
 
-**Note:** Express constrains how automation is authored and extended. Conceptually, the platform still executes workflow-defined logic; Express limits authoring depth and centralizes safe tuning through configuration parameters.
+**Note:** Business Policies are an Express-specific simplification. In Enterprise, routing, escalation, and prioritization are implemented through full **Triggers** with complete Programming capabilities.
+
+**Business Rules (Triggers):**
+Available operations:
+- Update Field
+- Function (call pre-built functions)
+- Execute SQL
+- Send Notification
+
+Unavailable operations:
+- Create Forms
+- Create Functions
+- Validation Rules
 
 ---
 
 ## 4. Object Creation Model
 
-Express shifts object creation toward a more declarative, template-driven model.
+A fundamental architectural difference between Express and Enterprise.
 
-### 4.1 Full Platform: Programmable Creation
+### 4.1 Enterprise: Create Actions
 
-In the full platform conceptual model, object creation can be governed by user-configured workflow logic, including initialization, validation, and automation side effects.
+Objects are created through **Create Actions** which include:
 
-### 4.2 Express: Declarative Creation
+| Component | Purpose |
+|-----------|---------|
+| **Template** | Field initialization |
+| **Form** | User input interface |
+| **Programming** | Operations executed on creation |
 
-In Express, object creation is primarily driven by templates and controlled inputs, emphasizing predictability and ease of administration. Complex creation-time automation that would require workflow engineering is intentionally constrained.
+Create Actions can execute any logic: update related objects, send notifications, run external commands.
+
+### 4.2 Express: Templates as Workflow Items
+
+In Express, **Templates are workflow items** (not components). They replace Create Actions entirely.
+
+Templates provide only:
+
+| Capability | Description |
+|------------|-------------|
+| **Field initialization** | Default values for object fields |
+| **Form caption** | Display name in the UI |
+
+**Programming (Operations) is not available.** Object creation performs only field initialization without programmable logic.
+
+This is a fundamental architectural difference: in Enterprise, Template is a *component* used by Create Actions; in Express, Template *is* the workflow item for object creation.
 
 ### 4.3 Conceptual Implication
 
@@ -161,9 +197,10 @@ In Express, object creation is primarily driven by templates and controlled inpu
 
 | Capability | Express | Enterprise |
 |------------|---------|------------|
-| Author new workflow actions | Not available | Full capability |
-| Modify action logic depth | Constrained | Full capability |
-| Control action availability/governance | Available | Available |
+| Create new Actions | Not available | Full capability |
+| Edit Action Programming | Not available | Full capability |
+| Enable/Disable Actions | Available | Available |
+| Configure Action access via Roles | Available | Available |
 
 **Principle:** Express administrators can control *which* actions are available, but not *what* actions do.
 
@@ -173,7 +210,7 @@ In Express, object creation is primarily driven by templates and controlled inpu
 
 | Item | Express Availability |
 |------|---------------------|
-| Templates | Available for declarative object initialization |
+| Templates | Workflow items for object creation (replace Create Actions); no Programming |
 | Business Policies | For Tickets, Change Requests; Approval Requests (Escalation only) |
 | Business Rules | Limited triggers for Tickets, Change Requests |
 
@@ -190,9 +227,10 @@ In Express, object creation is primarily driven by templates and controlled inpu
 
 | Capability | Status |
 |------------|--------|
-| Deep workflow authoring | Constrained relative to the full platform |
-| Custom form authoring | Not available |
-| Custom function authoring | Not available |
+| Create Actions | Not available (replaced by Templates) |
+| Step Actions | Cannot create or edit (pre-built only) |
+| Functions | Cannot create or edit |
+| Forms | Cannot create |
 | Validation Rules | Not available |
 | Object-level Macros | Not available |
 
@@ -210,7 +248,6 @@ For detailed object definitions, see [Express Business Objects Reference](expres
 | Inventory Item | Hardware | Same class, renamed |
 | Business Rule | Trigger | Same class, renamed |
 | Business Policy | Trigger | Express-specific simplification for routing, escalation, prioritization |
-| Product | Product Catalog Item | Same class, renamed (for procurement; not to be confused with Service Catalog Item, which is hidden) |
 | Library Item | Equipment | Same class, renamed |
 | Threshold Notification Rule | Stock Rule | Simplified capability |
 
@@ -222,10 +259,12 @@ Change Request exists in both editions but with differences:
 
 | Aspect | Express | Enterprise |
 |--------|---------|------------|
-| Related work decomposition | Uses Tickets for task execution | Uses Work Orders for task execution |
-| Related configuration linkage | May use simplified linkage semantics | Supports broader CI semantics |
-| Service classification context | Reduced | Expanded |
-| Automation tuning surface | Via Business Policies and configuration parameters | Via full workflow mechanisms |
+| Work Orders tab | Shows as "Child Tickets" | Shows Work Orders |
+| Related CI | Shows as "Related Asset" | Shows Related CI |
+| Service attribute | Not available | Available |
+| Urgency attribute | Not available | Available |
+| Impact attribute | Not available | Available |
+| Escalation configuration | Via Business Policies | Via Workflow Configuration section |
 
 **Note:** Change Request and Ticket are separate object classes. Views, widgets, and reports for "Tickets" do not include Change Requests.
 
@@ -233,10 +272,10 @@ Change Request exists in both editions but with differences:
 
 | Aspect | Express | Enterprise |
 |--------|---------|------------|
-| Supported objects | A constrained set of workflow-governed objects | Broadly applicable to workflow-governed objects |
-| Approval model | Simplified, single-stage approval | Multi-stage approval model |
-| Voting methods | Constrained | Expanded |
-| Customization approach | Configuration- and parameter-driven | Full workflow-driven customization |
+| Supported objects | Change Request, Purchase Order, KB Article | Any workflow-governed object |
+| Approval Stages | Single stage (object hidden) | Multiple stages (visible object) |
+| Voting methods | All Approved, Majority Decision | Extended methods |
+| Configuration location | Approval Workflow Parameters | Per-object workflow |
 
 Approval Request is a special object type (not a ticket).
 
@@ -259,7 +298,6 @@ These objects exist in the platform but are not surfaced in Express:
 | Document | Configuration Items | Advanced CI type |
 | Stock Room | Inventory | Simplified to threshold rules |
 | Approval Stage | Governance | Single-stage model |
-| Department | Organizational | Advanced organizational structure |
 
 ---
 
@@ -347,7 +385,7 @@ When planning Express implementations:
 
 | Aspect | Continuity |
 |--------|------------|
-| Object Identity | Records preserve identity and referential relationships |
+| Object Identity | All records preserve database identity |
 | Data Content | Field values migrate to corresponding fields |
 | Relationships | Links between objects preserved |
 | History | Audit trail and activity history maintained |
@@ -398,5 +436,5 @@ Express is formed from Enterprise through:
 
 ---
 
-*Document Version: 2.4*
+*Document Version: 2.6*
 *Source: ANX Product Specification, Platform Documentation*

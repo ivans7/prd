@@ -22,7 +22,9 @@ This document provides detailed definitions for all business objects available i
 | **Class 1** | No customization |
 | **Class 2** | Lookups only |
 | **Class 3** | Lookups + Notifications + Templates |
-| **Class 4** | Full: Lookups + Notifications + Templates + Business Policies + Business Rules |
+| **Class 4** | Full: Lookups + Notifications + Templates + Business Policies + Business Rules* |
+
+\* **Class 4 variation:** Ticket and Change Request have full Class 4 capabilities. Approval Request has limited Class 4: Lookups + Notifications + Templates + Escalation Policy only (no Routing, Prioritization, Additional Automation; no Business Rules).
 
 ---
 
@@ -65,7 +67,7 @@ This document provides detailed definitions for all business objects available i
 |--------|-------------|
 | **Definition** | A decision point requiring authorization before proceeding |
 | **Role** | Enforces governance controls on Change Requests, Purchase Orders, and KB Articles |
-| **Customization Class** | **Class 4** — Escalation Policy only |
+| **Customization Class** | **Class 4 (limited)** — Lookups + Notifications + Templates + Escalation Policy only; no Business Rules |
 | **Behavior** | Single-stage approval with two voting methods: All Approved or Majority Decision |
 | **Key Relationships** | Parent object (Change Request, Purchase Order, KB Article), Approvers |
 | **Enterprise Equivalent** | Multi-stage **Approval** with visible **Approval Stages** object and extended voting methods |
@@ -166,7 +168,7 @@ This document provides detailed definitions for all business objects available i
 | **Customization Class** | **Class 3** — Lookups + Notifications + Templates |
 | **Behavior** | Pre-configured quantity tracking with threshold notifications |
 | **Key Relationships** | Location, Vendor, Threshold Notification Rules |
-| **Enterprise Equivalent** | Same object class; integrates with **Stock Room** for advanced inventory management |
+| **Enterprise Equivalent** | Same object class; Enterprise adds **Stock Rules** with auto-transfer and auto-order capabilities |
 
 ### 2.7 Threshold Notification Rule
 
@@ -273,7 +275,7 @@ This document provides detailed definitions for all business objects available i
 | **Customization Class** | **Class 3** — Lookups + Notifications + Templates |
 | **Behavior** | Static reference data |
 | **Key Relationships** | Vendor, Purchase Orders |
-| **Enterprise Equivalent** | Same object class (**Product Catalog Item**) |
+| **Enterprise Equivalent** | Same object class (no difference) |
 
 ### 4.5 Contract
 
@@ -299,7 +301,7 @@ This document provides detailed definitions for all business objects available i
 | **Customization Class** | **Class 3** — Lookups + Notifications + Templates |
 | **Behavior** | Pre-configured with Active/Inactive status |
 | **Key Relationships** | Organization, Location, Assigned Assets, Submitted Tickets |
-| **Enterprise Equivalent** | Same object class; gains **Group** membership for advanced assignment |
+| **Enterprise Equivalent** | Same object class; Groups available in both editions for routing and approval |
 
 ### 5.2 Organization
 
@@ -310,7 +312,7 @@ This document provides detailed definitions for all business objects available i
 | **Customization Class** | **Class 2** — Lookups only |
 | **Behavior** | Static hierarchy |
 | **Key Relationships** | Persons, Assets, Contracts |
-| **Enterprise Equivalent** | Same object class; gains **Department** for finer structure |
+| **Enterprise Equivalent** | Same object class; Enterprise supports deeper organizational hierarchy |
 
 ### 5.3 Location
 
@@ -358,7 +360,6 @@ This document provides detailed definitions for all business objects available i
 | Business Rule | Trigger | Same class, renamed |
 | Threshold Notification Rule | Stock Rule | Simplified capability |
 | Library Item | Equipment | Same class, renamed |
-| Product | Product Catalog Item | Same class, renamed |
 | Customization | Workflow and Business Logic | UI section renamed |
 
 ---
@@ -376,7 +377,6 @@ These objects exist in the platform but are hidden in Express:
 | Service | Service Management | Hidden |
 | Service Catalog Item | Service Management | Hidden |
 | SLA | Service Management | Hidden |
-| Recurrent Ticket | Automation | Hidden |
 | Asset | Financial | Hidden (consolidated into CI) |
 | Hardware | Asset Management | Renamed to "Inventory Item" |
 | Configuration | Configuration Items | Hidden |
@@ -386,12 +386,11 @@ These objects exist in the platform but are hidden in Express:
 | Stock Rule | Inventory | Simplified as "Threshold Notification Rule" |
 | Project | Project Management | Hidden |
 | Project Task | Project Management | Hidden |
-| Department | Organizational | Hidden |
 | Approval Stage | Governance | Hidden (single-stage model) |
-| Approval Group | Governance | Hidden |
+| Approval Group | Governance | Hidden as separate object; approval groups configured via Groups + Workflow Parameters |
 
 ---
 
-*Document Version: 2.1*
+*Document Version: 2.8*
 *Source: ANX Product Specification*
 *Total Objects: 24*
