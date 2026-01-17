@@ -1,0 +1,13 @@
+### Documentation source dumps / generated help output
+OnlineDocs/
+
+### OS / editor
+.DS_Store
+Thumbs.db
+
+### Temporary files
+*.tmp
+*.bak
+*.swp
+*.swo
+*~

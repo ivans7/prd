@@ -1,0 +1,133 @@
+# Project Rules: Platform Documentation
+
+## Project Context
+
+This is a **product documentation project** for a workflow-driven IT Service Management and IT Asset Management platform. The documentation is conceptual and architectural, not operational.
+
+---
+
+## Critical Platform Assumptions (MUST ENFORCE)
+
+These assumptions are fundamental and must be reflected in all documentation:
+
+### 1. Workflow-Driven Platform
+- The platform is workflow-driven
+- ALL business object behavior is defined by user-configured workflows
+- Workflows include: Actions, Triggers, Templates, Functions, Business Policies
+
+### 2. No Fixed Lifecycles
+- The platform does NOT define fixed lifecycles, statuses, or business processes
+- Status values are user-defined classification entries
+- Lifecycle stages are user-configured, not platform-prescribed
+- Transition paths are defined by workflow configuration
+
+### 3. Inventory Tools are NOT Core Components
+- Discovery, AlloyScan, and other inventory tools are OPTIONAL data sources
+- They are data population methods, not platform pillars
+- All data population methods are conceptually equal:
+  - Manual input
+  - Import/Export
+  - Email integration
+  - Directory synchronization (Active Directory, LDAP)
+  - Discovery (network scanning)
+  - AlloyScan (agent-based inventory)
+  - External tools and third-party integrations
+  - API integration
+- No single data source is required or preferred by the platform
+
+### 4. Separation of Capabilities from Business Logic
+- Platform provides MECHANISMS (fields, actions, triggers, automation engine)
+- Users define LOGIC (what statuses exist, what transitions are allowed, what rules apply)
+
+---
+
+## Document Rules
+
+### Content Boundaries
+
+**INCLUDE:**
+- Conceptual definitions and business meanings
+- Domain-level descriptions
+- Workflow-driven behavior explanations
+- Relationships between concepts
+- What the platform provides vs. what users configure
+
+**EXCLUDE:**
+- UI descriptions, screens, buttons, click paths
+- Database schemas, table structures, API specifications
+- Installation, configuration, or operational procedures
+- Plans, editions, pricing, or licensing information
+- Predefined lifecycles or status models
+- Implementation details
+
+### Writing Style
+
+| Aspect | Guideline |
+|--------|-----------|
+| **Tone** | Precise, architectural, neutral (non-marketing) |
+| **Language** | English for documentation content |
+| **Terminology** | Use consistent terms from Glossary |
+| **Structure** | Tables for structured information, clear headings |
+
+### Business Object Descriptions
+
+When describing business objects, use this format:
+
+```markdown
+| Aspect | Description |
+|--------|-------------|
+| **Definition** | What this object represents |
+| **Role** | Business purpose within the platform |
+| **Behavior** | How the object is managed (Workflow-governed / Static / System-managed) |
+| **Key Relationships** | Primary connections to other object types |
+```
+
+**Behavior Types:**
+- **Workflow-governed**: State, transitions, and automation defined by user-configured workflows
+- **Static**: Reference data with minimal state changes
+- **System-managed**: Created/maintained by platform mechanisms
+
+### Terminology Consistency
+
+| Correct Term | Avoid |
+|--------------|-------|
+| Workflow-governed | Has lifecycle, follows lifecycle |
+| User-configured | Built-in, predefined, default |
+| Classification values | Fixed statuses |
+| Data population method | Data source requirement |
+| Business object | Entity, record (in conceptual context) |
+| Platform capabilities | Platform features |
+| Business logic | Business rules (when referring to user-defined logic) |
+
+---
+
+## File Structure
+
+| File | Purpose |
+|------|---------|
+| `platform-conceptual-model.md` | Core conceptual architecture document |
+| `business-objects-reference.md` | Detailed definitions of all business objects |
+| Additional domain guides | Specific capability areas |
+
+---
+
+## Quality Checks
+
+Before finalizing any documentation:
+
+1. ✓ No fixed lifecycle descriptions (states are user-defined)
+2. ✓ No UI references (screens, buttons, navigation)
+3. ✓ No implementation details (schemas, APIs)
+4. ✓ Inventory tools (Discovery, AlloyScan, external) mentioned as optional data sources only
+5. ✓ Workflow-driven nature emphasized
+6. ✓ Consistent terminology used
+7. ✓ Tables used for structured information
+8. ✓ Clear separation of platform capabilities vs. business logic
+
+---
+
+## Response Language
+
+- Respond in the same language as the user's query
+- Documentation content should be in English
+- Code comments and technical terms remain in English
