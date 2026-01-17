@@ -386,13 +386,12 @@ These objects exist in the platform but are hidden in Express:
 | Stock Rule | Inventory | Simplified as "Threshold Notification Rule" |
 | Project | Project Management | Hidden |
 | Project Task | Project Management | Hidden |
-| Group | Organizational | Hidden |
 | Department | Organizational | Hidden |
 | Approval Stage | Governance | Hidden (single-stage model) |
 | Approval Group | Governance | Hidden |
 
 ---
 
-*Document Version: 2.0*
+*Document Version: 2.1*
 *Source: ANX Product Specification*
 *Total Objects: 24*

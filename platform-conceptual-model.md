@@ -259,7 +259,7 @@ Functions enable modular logic definition and consistent operation execution acr
 
 #### Workflow Parameters
 
-Workflow Parameters are configuration values that can be referenced across multiple workflow items (Actions, Triggers, Functions). They enable:
+Workflow Parameters (also referred to in product documentation as configuration parameters used for workflow configuration) are centrally managed configuration values that can be referenced across multiple workflow items (Actions, Triggers, Functions). They enable:
 
 - **Centralized configuration**: Change a value once, update all references automatically
 - **Reduced redundancy**: Avoid duplicating the same value in multiple places
@@ -270,7 +270,9 @@ Example uses:
 - Escalation timeout threshold
 - Notification recipient email
 
-Parameters are referenced using placeholders (e.g., `%[WFP:ParameterName]%`) in field values, conditions, and notifications.
+**Why they “look like macros”:** parameters are inserted and evaluated via placeholders (WFP). This makes them mechanically similar to macros, but conceptually different: a parameter is a typed, user-friendly configuration input intended to expose specific workflow behaviors for safe tuning without editing the workflow definition itself.
+
+**Express implication:** in editions where the shipped workflow is not intended to be customized directly, configuration parameters provide a controlled surface for adjusting business logic (for example, assignees, thresholds, and routing/escalation settings) in a user-friendly way while keeping the underlying workflow structure unchanged.
 
 #### Terminal Status
 Terminal status is a user-configured characteristic of a classification value that indicates an object is considered complete for automation and governance purposes. Importantly, terminal statuses (and their semantics) are not predefined by the platform; they are part of user-configured business logic.
