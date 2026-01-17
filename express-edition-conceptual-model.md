@@ -298,6 +298,7 @@ These objects exist in the platform but are not surfaced in Express:
 | Document | Configuration Items | Advanced CI type |
 | Stock Room | Inventory | Simplified to threshold rules |
 | Approval Stage | Governance | Single-stage model |
+| Approval Group | Governance | Hidden as separate object; uses Groups + Workflow Parameters |
 
 ---
 
@@ -436,5 +437,5 @@ Express is formed from Enterprise through:
 
 ---
 
-*Document Version: 2.6*
+*Document Version: 2.7*
 *Source: ANX Product Specification, Platform Documentation*

@@ -100,6 +100,17 @@ This document provides detailed definitions for all business objects available i
 | **Key Relationships** | Target audience |
 | **Enterprise Equivalent** | Same object class |
 
+### 1.6 Recurrent Ticket
+
+| Aspect | Description |
+|--------|-------------|
+| **Definition** | A scheduled job that automatically creates Tickets on a recurring basis |
+| **Role** | Automates creation of periodic tasks (maintenance, reviews, compliance checks) |
+| **Customization Class** | **Class 3** — Lookups + Notifications + Templates |
+| **Behavior** | System-managed via Automation Server; creates Tickets according to schedule |
+| **Key Relationships** | Ticket (created), Template, Schedule |
+| **Enterprise Equivalent** | Same object class |
+
 ---
 
 ## 2. Asset Management Objects
@@ -331,12 +342,12 @@ This document provides detailed definitions for all business objects available i
 
 | Category | Count | Objects |
 |----------|-------|---------|
-| Service Management | 5 | Ticket, Change Request, Approval Request, KB Article, Announcement |
+| Service Management | 6 | Ticket, Change Request, Approval Request, KB Article, Announcement, Recurrent Ticket |
 | Asset Management | 9 | Computer, Inventory Item, Software License, Tracked Software, Software Catalog Item, Consumable, Threshold Notification Rule, Discovered Installation, Manufacturer |
 | Equipment Lending | 2 | Library Item, Reservation |
 | Procurement | 5 | Purchase Order, PO Item, Vendor, Product, Contract |
 | Organizational | 3 | Person, Organization, Location |
-| **Total** | **24** | |
+| **Total** | **25** | |
 
 ---
 
@@ -346,8 +357,10 @@ This document provides detailed definitions for all business objects available i
 |-------|-------|---------|
 | **Class 1** | No customization | Discovered Installation, Manufacturer, Tracked Software, Software Catalog Item, PO Item |
 | **Class 2** | Lookups only | Organization, Location, Vendor |
-| **Class 3** | Lookups + Notifications + Templates | Computer, Inventory Item, Purchase Order, Contract, Software License, KB Article, Person, Library Item, Consumable, Threshold Notification Rule, Reservation, Product, Announcement |
-| **Class 4** | Full Express customization | Ticket, Change Request, Approval Request |
+| **Class 3** | Lookups + Notifications + Templates | Computer, Inventory Item, Purchase Order, Contract, Software License, KB Article, Person, Library Item, Consumable, Threshold Notification Rule, Reservation, Product, Announcement, Recurrent Ticket |
+| **Class 4** | Full Express customization | Ticket, Change Request, Approval Request (limited)* |
+
+\* See Class 4 variation note in Customization Classes section.
 
 ---
 
@@ -391,6 +404,6 @@ These objects exist in the platform but are hidden in Express:
 
 ---
 
-*Document Version: 2.8*
+*Document Version: 3.0*
 *Source: ANX Product Specification*
-*Total Objects: 24*
+*Total Objects: 25*
