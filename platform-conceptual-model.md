@@ -213,7 +213,7 @@ Step Actions perform operations on existing objects during their lifecycle:
 - Field modifications (e.g., adding annotations, updating categorization or prioritization attributes)
 - Relationship changes (e.g., linking related objects, creating related tasks)
 
-Step Actions use the same components (Template, Form, Programming) but operate on already-created objects.
+Step Actions operate on already-created objects and can collect inputs (via forms) and execute configured logic/operations. Templates are primarily used to initialize newly created objects (via Create Actions) and can also be applied when workflow logic creates related objects.
 
 ##### Service Actions
 
