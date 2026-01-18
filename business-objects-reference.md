@@ -202,16 +202,7 @@ Configuration Items represent managed components of IT infrastructure. All CIs s
 
 **Note:** Configuration is distinct from Configuration Item (CI). CI is the ITIL term for any managed component; Configuration is a specific object type describing a configuration/assembly.
 
-### 3.6 Tracked Software
-
-| Aspect | Description |
-|--------|-------------|
-| **Definition** | A CI representing software that is tracked for licensing compliance |
-| **Role** | Links Software Catalog Items to Software Licenses for compliance monitoring |
-| **Behavior** | Workflow-governed. Compliance status and tracking rules are workflow-defined |
-| **Key Relationships** | Software Catalog Item, Software License, Software Installation |
-
-**Note:** Tracked Software is both a CI and part of the Software Management hierarchy. A single Tracked Software record can join multiple Software Products (e.g., different versions) and include several Software Licenses.
+**Note:** Tracked Software is also a CI type but is covered in [Section 6.3 Software Management Objects](#63-tracked-software) as it primarily serves software licensing compliance.
 
 ---
 
@@ -226,7 +217,7 @@ Objects for financial tracking, ownership, and procurement. Note: Asset is a fin
 | **Definition** | A financial record tracking ownership, cost, and depreciation of an IT resource |
 | **Role** | Stores financial data about a CI while the CI record tracks technical information |
 | **Behavior** | Workflow-governed. Asset lifecycle states and financial tracking are workflow-defined |
-| **Key Relationships** | Computer, Hardware, Software License, Consumable (Associated CI), Organization (owner), Contract, Cost Center |
+| **Key Relationships** | Computer, Hardware, Software License, Consumable (Associated CI), Organization (owner), Contract |
 
 **Important:** Asset is NOT a base class. It is an optional financial overlay that can be associated with a CI (Computer, Hardware, Software License, or Consumable) to track financial aspects separately from technical configuration.
 
@@ -237,7 +228,7 @@ Objects for financial tracking, ownership, and procurement. Note: Asset is a fin
 | **Definition** | A formal agreement with an external party for products, services, or support |
 | **Role** | Tracks vendor agreements, terms, renewal dates, and covered assets |
 | **Behavior** | Workflow-governed. Expiration tracking and renewal management are workflow-configured |
-| **Key Relationships** | Vendor, Hardware, Software License, Asset, Document, Cost Center, Person (owner) |
+| **Key Relationships** | Vendor, Hardware, Software License, Asset, Document, Person (owner) |
 
 ### 4.3 Purchase Order
 
@@ -246,7 +237,7 @@ Objects for financial tracking, ownership, and procurement. Note: Asset is a fin
 | **Definition** | A formal request to acquire goods or services from a vendor |
 | **Role** | Tracks procurement from request through receipt and payment |
 | **Behavior** | Workflow-governed. Approval, fulfillment, and receipt confirmation are workflow-defined |
-| **Key Relationships** | PO Item, Vendor, Product Catalog Item, Contract, Cost Center, Approval |
+| **Key Relationships** | PO Item, Vendor, Product, Contract, Approval |
 
 ### 4.4 PO Item
 
@@ -255,7 +246,7 @@ Objects for financial tracking, ownership, and procurement. Note: Asset is a fin
 | **Definition** | A line item within a Purchase Order specifying quantity and product |
 | **Role** | Details individual products or services being ordered |
 | **Behavior** | System-managed. Created as part of Purchase Order |
-| **Key Relationships** | Purchase Order (parent), Product Catalog Item, Asset (received) |
+| **Key Relationships** | Purchase Order (parent), Product, Asset (received) |
 
 ### 4.5 Vendor
 
@@ -264,25 +255,7 @@ Objects for financial tracking, ownership, and procurement. Note: Asset is a fin
 | **Definition** | An external organization that supplies products or services |
 | **Role** | Maintains supplier information for procurement and contract management |
 | **Behavior** | Static reference data. Linked to contracts, purchases, and products |
-| **Key Relationships** | Contract, Purchase Order, Product Catalog Item, Software License, Person (contact) |
-
-### 4.6 Cost Center
-
-| Aspect | Description |
-|--------|-------------|
-| **Definition** | An organizational unit or budget category for expense allocation |
-| **Role** | Enables financial tracking and chargeback by associating costs with responsible entities |
-| **Behavior** | Static reference data. Used for cost allocation in assets and purchases |
-| **Key Relationships** | Organization, Asset, Purchase Order, Contract |
-
-### 4.7 Warranty
-
-| Aspect | Description |
-|--------|-------------|
-| **Definition** | A guarantee of repair or replacement for a product within specified terms |
-| **Role** | Tracks warranty coverage and expiration for assets |
-| **Behavior** | Workflow-governed. Expiration notifications and claim processes are workflow-configured |
-| **Key Relationships** | Hardware, Computer, Vendor, Contract |
+| **Key Relationships** | Contract, Purchase Order, Product, Software License, Person (contact) |
 
 ---
 
@@ -315,13 +288,13 @@ Objects for managing physical inventory, stock, and equipment lending.
 | **Definition** | Expendable supplies tracked by quantity rather than individual identity (toner, cables, batteries) |
 | **Role** | Manages inventory levels of non-serialized supplies |
 | **Behavior** | Workflow-governed. Reorder thresholds, stock adjustments, and allocation are workflow-configured |
-| **Key Relationships** | Stock Room, Location, Vendor, Purchase Order, Product Catalog Item |
+| **Key Relationships** | Stock Room, Location, Vendor, Purchase Order, Product |
 
-### 5.4 Product Catalog Item
+### 5.4 Product
 
 | Aspect | Description |
 |--------|-------------|
-| **Definition** | A product or service available for purchase, defined in the purchasing catalog |
+| **Definition** | A product or service available for purchase, defined in the Product Catalog |
 | **Role** | Provides a reference catalog for creating Purchase Orders and managing procurement |
 | **Behavior** | Static reference data. Defines products (physical items) and services (maintenance, warranty) |
 | **Key Relationships** | Vendor, Purchase Order, PO Item, Consumable |
@@ -382,6 +355,8 @@ Objects for tracking software products, licenses, and installations.
 | **Key Relationships** | Software Catalog Item, Software License, Software Installation |
 
 **Hierarchy:** A single Tracked Software record can join multiple Software Products (e.g., different versions) and include several Software Licenses.
+
+**Note:** Tracked Software is also classified as a Configuration Item (CI) type.
 
 ### 6.4 Software Installation
 
@@ -447,14 +422,16 @@ Objects that represent people, groups, and organizational structures.
 | **Behavior** | Static reference data |
 | **Key Relationships** | Organization |
 
-### 7.6 Brand
+### 7.6 Manufacturer
 
 | Aspect | Description |
 |--------|-------------|
 | **Definition** | A manufacturer or brand name for hardware and software products |
 | **Role** | Provides reference data for categorizing assets by manufacturer |
-| **Behavior** | Static reference data |
-| **Key Relationships** | Hardware, Computer, Product Catalog Item |
+| **Behavior** | Static reference data. Automatically created from discovery audit snapshots |
+| **Key Relationships** | Hardware, Computer, Product, Software Catalog Item |
+
+**Note:** The UI displays "Manufacturers" while the database table is named "Brands". These refer to the same object.
 
 ---
 
@@ -665,14 +642,14 @@ Objects that provide operational aids, documentation, and system records.
 |----------|-------|-----------------|
 | Service Management | 11 | Handle service activities, requests, and communication |
 | Project Management | 2 | Manage IT projects and tasks |
-| Configuration Items | 6 | Track managed IT infrastructure components |
-| Asset & Financial | 7 | Financial tracking and procurement |
+| Configuration Items | 5 | Track managed IT infrastructure components |
+| Asset & Financial | 5 | Financial tracking and procurement |
 | Inventory Management | 6 | Stock, consumables, and equipment lending |
 | Software Management | 4 | Software products, licenses, and compliance |
 | Organizational | 7 | People, groups, and structures |
 | Platform Configuration | 12 | Define platform behavior |
 | Support | 9 | Operational aids and system records |
-| **Total** | **64** | |
+| **Total** | **61** | |
 
 ---
 
@@ -728,6 +705,6 @@ Software Catalog Item (Software Product)
 
 ---
 
-*Document Version: 2.1*
+*Document Version: 2.2*
 *Reference Scope: Platform Business Objects*
-*Total Objects: 64*
+*Total Objects: 61*

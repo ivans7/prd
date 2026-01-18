@@ -130,10 +130,10 @@ Business objects are the fundamental entities that the platform manages. They ar
 | **Service Management** | Handle service-related activities and requests | Incident, Service Request, Change Request, Problem, Work Order, Approval, SLA, Service, Recurrent Ticket, Announcement |
 | **Project Management** | Manage IT projects and tasks | Project, Project Task |
 | **Configuration Items** | Track managed IT infrastructure components | Computer, Hardware, Network, Document, Configuration, Tracked Software |
-| **Asset & Financial** | Financial tracking, ownership, and procurement | Asset, Contract, Purchase Order, PO Item, Vendor, Cost Center, Warranty |
-| **Inventory Management** | Stock, consumables, and equipment lending | Stock Room, Stock Rule, Consumable, Product Catalog Item, Equipment, Equipment Reservation |
+| **Asset & Financial** | Financial tracking, ownership, and procurement | Asset, Contract, Purchase Order, PO Item, Vendor |
+| **Inventory Management** | Stock, consumables, and equipment lending | Stock Room, Stock Rule, Consumable, Product, Equipment, Equipment Reservation |
 | **Software Management** | Software products, licenses, and compliance | Software Catalog Item, Software License, Tracked Software, Software Installation |
-| **Organizational** | Represent people and organizational structures | Person, Organization, Department, Group, Location, Company Address, Brand |
+| **Organizational** | Represent people and organizational structures | Person, Organization, Group, Location, Company Address, Manufacturer |
 | **Platform Configuration** | Define platform behavior and structure | Workflow, Object Class, Form, Field, Action, Trigger, Function, Template, Security Role |
 | **Support** | Provide operational aids and system records | Knowledge Article, Attachment, Note, Email, Audit Trail, Report, Dashboard, Saved Search |
 
@@ -153,7 +153,7 @@ Objects exhibit different behavior patterns:
 | Behavior Type | Description | Examples |
 |---------------|-------------|----------|
 | **Workflow-governed** | State, transitions, and automation defined by user-configured workflows | Incident, Change Request, Computer |
-| **Static reference** | Serves as reference data with minimal state changes | Vendor, Location, Cost Center |
+| **Static reference** | Serves as reference data with minimal state changes | Vendor, Location |
 | **System-managed** | Created and maintained by platform mechanisms | Audit Trail Entry, Attachment |
 
 For detailed definitions of business objects, see [Business Objects Reference](business-objects-reference.md).
