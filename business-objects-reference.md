@@ -217,9 +217,9 @@ Objects for financial tracking, ownership, and procurement. Note: Asset is a fin
 | **Definition** | A financial record tracking ownership, cost, and depreciation of an IT resource |
 | **Role** | Stores financial data about a CI while the CI record tracks technical information |
 | **Behavior** | Workflow-governed. Asset lifecycle states and financial tracking are workflow-defined |
-| **Key Relationships** | Computer, Hardware, Software License, Consumable (Associated CI), Organization (owner), Contract |
+| **Key Relationships** | Computer, Hardware, Software License, Organization (owner), Contract |
 
-**Important:** Asset is NOT a base class. It is an optional financial overlay that can be associated with a CI (Computer, Hardware, Software License, or Consumable) to track financial aspects separately from technical configuration.
+**Important:** Asset is NOT a base class. It is an optional financial overlay that can be associated with a CI (Computer, Hardware, or Software License) to track financial aspects separately from technical configuration.
 
 **Conceptual note:** For many organizations, a single physical item is represented by a CI record (technical identity) and, optionally, a linked Asset record (financial identity). Not every CI must have an Asset, and financial governance can be applied independently of technical lifecycle management.
 
@@ -290,7 +290,7 @@ Objects for managing physical inventory, stock, and equipment lending.
 | **Definition** | Expendable supplies tracked by quantity rather than individual identity (toner, cables, batteries) |
 | **Role** | Manages inventory levels of non-serialized supplies |
 | **Behavior** | Workflow-governed. Reorder thresholds, stock adjustments, and allocation are workflow-configured |
-| **Key Relationships** | Stock Room, Location, Vendor, Purchase Order, Product, Asset (optional financial overlay) |
+| **Key Relationships** | Stock Room, Location, Vendor, Purchase Order, Product |
 
 ### 5.4 Product
 
