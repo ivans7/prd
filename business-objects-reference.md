@@ -153,25 +153,25 @@ Objects that support project planning and execution.
 
 ## 3. Configuration Items (CI)
 
-Configuration Items represent managed components of IT infrastructure. All CIs share common characteristics: they can be related to other CIs, linked to tickets, and tracked for changes.
+Configuration Items represent managed components of IT infrastructure and serve as the **technical identity** of what is being managed. All CIs share common characteristics: they can be related to other CIs, linked to tickets, and tracked for changes. Financial tracking is represented separately through the **Asset** object, optionally linked to a CI.
 
 ### 3.1 Computer
 
 | Aspect | Description |
 |--------|-------------|
 | **Definition** | An end-user computing device (desktop, laptop, workstation, server) |
-| **Role** | Tracks computing assets with technical specifications and software inventory |
-| **Behavior** | Workflow-governed. Deployment states, retirement processes, and update handling are workflow-configured |
-| **Key Relationships** | Person (assigned user), Organization, Location, Software Installation, Asset (financial data), Incident |
+| **Role** | Tracks a computing device as a configuration item (CI), including technical specifications, operational context, and software inventory |
+| **Behavior** | Workflow-governed. Deployment states, retirement handling, and update handling are workflow-configured |
+| **Key Relationships** | Person (assigned user), Organization, Location, Software Installation, Asset (optional financial overlay), Incident |
 
 ### 3.2 Hardware
 
 | Aspect | Description |
 |--------|-------------|
 | **Definition** | Physical IT equipment other than computers (network devices, peripherals, storage, components) |
-| **Role** | Tracks physical infrastructure with technical specifications |
+| **Role** | Tracks physical infrastructure as a configuration item (CI), including technical specifications and operational context |
 | **Behavior** | Workflow-governed. Deployment, maintenance, and decommissioning states are workflow-defined |
-| **Key Relationships** | Location, Organization, Asset (financial data), Contract, Incident, Component |
+| **Key Relationships** | Location, Organization, Asset (optional financial overlay), Contract, Incident, Component |
 
 ### 3.3 Network
 
@@ -221,12 +221,14 @@ Objects for financial tracking, ownership, and procurement. Note: Asset is a fin
 
 **Important:** Asset is NOT a base class. It is an optional financial overlay that can be associated with a CI (Computer, Hardware, Software License, or Consumable) to track financial aspects separately from technical configuration.
 
+**Conceptual note:** For many organizations, a single physical item is represented by a CI record (technical identity) and, optionally, a linked Asset record (financial identity). Not every CI must have an Asset, and financial governance can be applied independently of technical lifecycle management.
+
 ### 4.2 Contract
 
 | Aspect | Description |
 |--------|-------------|
 | **Definition** | A formal agreement with an external party for products, services, or support |
-| **Role** | Tracks vendor agreements, terms, renewal dates, and covered assets |
+| **Role** | Tracks vendor agreements, terms, renewal dates, and covered items (CIs and related Asset records) |
 | **Behavior** | Workflow-governed. Expiration tracking and renewal management are workflow-configured |
 | **Key Relationships** | Vendor, Hardware, Software License, Asset, Document, Person (owner) |
 
@@ -288,7 +290,7 @@ Objects for managing physical inventory, stock, and equipment lending.
 | **Definition** | Expendable supplies tracked by quantity rather than individual identity (toner, cables, batteries) |
 | **Role** | Manages inventory levels of non-serialized supplies |
 | **Behavior** | Workflow-governed. Reorder thresholds, stock adjustments, and allocation are workflow-configured |
-| **Key Relationships** | Stock Room, Location, Vendor, Purchase Order, Product |
+| **Key Relationships** | Stock Room, Location, Vendor, Purchase Order, Product, Asset (optional financial overlay) |
 
 ### 5.4 Product
 
@@ -343,7 +345,7 @@ Objects for tracking software products, licenses, and installations.
 | **Definition** | A legal entitlement to use a specific software product under defined terms |
 | **Role** | Tracks software entitlements and enables compliance comparison against installations |
 | **Behavior** | Workflow-governed. Allocation, expiration handling, and renewal processes are workflow-configured |
-| **Key Relationships** | Tracked Software, Software Installation, Computer, Person, Organization, Contract, Vendor |
+| **Key Relationships** | Tracked Software, Software Installation, Computer, Person, Organization, Contract, Vendor, Asset (optional financial overlay) |
 
 ### 6.3 Tracked Software
 

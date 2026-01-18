@@ -164,6 +164,20 @@ For detailed definitions of business objects, see [Business Objects Reference](b
 - **Equipment vs Hardware**: Hardware is a CI for inventory tracking. Equipment (Library Item) is for temporary lending to users with check-out/check-in.
 - **Configuration vs Configuration Item**: Configuration is an object describing a standard setup (e.g., "Email Configuration"). CI is the ITIL term for any managed component.
 
+#### Asset Overlay Pattern (Why “Computer” and “Asset” Coexist)
+
+In the platform model, a single real-world item (for example, a laptop) can be represented using **two distinct but linked records**:
+
+```
+Computer / Hardware (CI)  ── Associated CI ──►  Asset (financial record)
+        technical identity                      financial identity
+```
+
+- The **CI** answers: *What is it, how is it configured, how does it relate to other items, and what operational state is it in?*
+- The **Asset** answers: *Who owns it, what did it cost, how is it depreciated, and what is its financial lifecycle?*
+
+This separation is intentional: financial tracking and technical configuration evolve at different rates, have different stakeholders, and require different governance. The platform supports linking them, but does not treat Asset as a base class for CIs.
+
 ---
 
 ## 4. Workflow-Centric Model
