@@ -38,10 +38,14 @@ This document provides detailed definitions for all business objects available i
 | **Role** | Primary object for tracking work to be done; task-focused rather than ITIL-categorized |
 | **Customization Class** | **Class 4** — Full Express customization |
 | **Behavior** | Pre-configured workflow. Business Policies (Prioritization, Routing, Escalation) and Business Rules available |
-| **Key Relationships** | Requester (Person), Assignee (Person), Related Computers, Related Inventory Items, Parent Change Request |
+| **Key Relationships** | Requester (Person), Assignee (Person), Related Computers, Related Inventory Items, Parent Change Request, Parent Ticket, Child Tickets |
+| **Hierarchical Structure** | Supports recursive parent-child relationships: Ticket can have Child Tickets, which can have their own children (grandchildren, etc.) |
+| **Available Tabs** | General, Activity, Resolution, Custom Data (optional), **Child Tickets**, Related Objects, Notes, Attachments, History |
 | **Enterprise Equivalent** | Renamed from **Work Order**. ITIL objects (Incident, Service Request, Problem) are separate hidden classes, not consolidated into Ticket |
 
-**Important:** Ticket is a renamed Work Order, not a consolidation of Incident and Service Request. In Enterprise, Work Order, Incident, Service Request, and Problem are all separate object classes.
+**Important:**
+- Ticket is a renamed Work Order, not a consolidation of Incident and Service Request. In Enterprise, Work Order, Incident, Service Request, and Problem are all separate object classes.
+- Ticket supports hierarchical decomposition via Child Tickets tab, allowing multi-level task breakdown.
 
 ### 1.2 Change Request
 
@@ -51,7 +55,8 @@ This document provides detailed definitions for all business objects available i
 | **Role** | Controls and coordinates changes with approval governance |
 | **Customization Class** | **Class 4** — Full Express customization |
 | **Behavior** | Pre-configured workflow with lifecycle stages and approval; Business Policies and Business Rules available |
-| **Key Relationships** | Requester (Person), Approvers, Related Assets (shown instead of Related CI), Child Tickets (shown instead of Work Orders) |
+| **Key Relationships** | Requester (Person), Approvers, Related Assets (shown instead of Related CI), Child Tickets |
+| **Available Tabs** | General, Activity, Approvals (optional), Custom Data (optional), **Child Tickets**, Related Objects, Notes, Attachments, History |
 | **Enterprise Equivalent** | Same object class. Enterprise adds: Service, Urgency, Impact attributes; Related CI; Work Orders tab; Escalation in Workflow Configuration |
 
 **Express limitations:**
@@ -59,7 +64,7 @@ This document provides detailed definitions for all business objects available i
 - No Urgency attribute
 - No Impact attribute
 - Related CI shown as "Related Asset"
-- Work Orders tab shown as "Child Tickets"
+- Child Tickets in Express = Work Orders in Enterprise (UI terminology difference, same underlying relationship)
 
 ### 1.3 Approval Request
 

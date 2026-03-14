@@ -4,7 +4,12 @@
       "Bash(grep:*)",
       "Bash(find:*)",
       "WebSearch",
-      "WebFetch(domain:docs.alloysoftware.com)"
+      "WebFetch(domain:docs.alloysoftware.com)",
+      "Bash(cd:*)",
+      "Bash(du -sh /home/ivans/Projects/prd/OnlineDocs/AlloyNavigator/Guides/* 2>/dev/null | head -20)",
+      "Bash(find /home/ivans/Projects/prd -type d -name \"AlloyNavigator\" -o -type d -name \"AlloyPlatform\" -o -type d -name \"Common\" | xargs ls -ld)",
+      "Bash(wc -l /home/ivans/Projects/prd/*.md 2>/dev/null | sort -rn)",
+      "Bash(ls -lh /home/ivans/Projects/prd/*.md)"
     ]
   }
 }

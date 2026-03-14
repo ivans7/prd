@@ -4,6 +4,56 @@
 
 This is a **product documentation project** for a workflow-driven IT Service Management and IT Asset Management platform. The documentation is conceptual and architectural, not operational.
 
+**Platform:** Alloy Navigator (Alloy Software)
+
+### Documentation Sources
+
+When verifying platform capabilities or technical facts, consult:
+
+| Source | URL / Location |
+|--------|----------------|
+| **Official Online Docs** | https://docs.alloysoftware.com |
+| **Local Documentation** | `OnlineDocs` folder (bundled with product installation) |
+
+---
+
+## Platform Technical Facts
+
+These are verified technical constraints of the Alloy Navigator platform:
+
+### Work Order / Ticket Hierarchy
+
+- **Work Order SUPPORTS parent-child hierarchy (recursion)**
+- Work Order can have subordinate (child) Work Orders
+- Hierarchy supports multiple levels: children, grandchildren, etc.
+- Views available: All Descendants, Children Only, Hierarchy Tree
+- Parent Ticket field identifies the parent Work Order
+- Cumulative Time Spent sums time across parent and all subordinates
+- Source: https://docs.alloysoftware.com/alloynavigator/help/webportal/content/service-support-and-projects/work-orders-tab.htm
+
+### Incident Hierarchy (Enterprise)
+
+- **Incident does NOT support parent-child hierarchy** in current Enterprise version
+- Incident has Related Problem, Related Change Request fields, but NO Parent Incident field
+- Incident can have subordinate **Work Orders** (decomposition)
+- Cumulative Time Spent sums time across Incident and its Work Orders
+- Source: https://docs.alloysoftware.com/alloynavigator/help/webportal/content/service-support-and-projects/general-tab-incident.htm
+
+**Note:** The modular-product-model-proposal.md proposes **adding** Parent-Child Incident hierarchy as a new feature.
+
+### Express Edition: Two Ticket Types
+
+In Express, there are effectively **two types of Tickets** based on their role in hierarchy:
+
+| Template | Type | Can be Parent? | Can be Child? | Notes |
+|----------|------|----------------|---------------|-------|
+| **Quick Request [#840]** | Primary ticket | ✓ Yes | ✓ Yes | Standalone or parent, available in Desktop/Web/Mobile |
+| **Quick Task (Child) [#841]** | Child ticket | ✓ Yes | ✓ Yes (designed for this) | Created via Child Tickets tab, marked with "This template creates child tickets" |
+
+**Key point:** Quick Task is **specifically designed** to be a subordinate ticket. Its template has the "This template creates child tickets" checkbox and is only available through the Child Tickets tab of a parent ticket.
+
+- Source: https://docs.alloysoftware.com/alloynavigatorexpress/docs/adminguide/adminguide/workflow-management/configuring-workflow-templates/customizing-create-ticket-forms.htm
+
 ---
 
 ## Critical Platform Assumptions (MUST ENFORCE)
