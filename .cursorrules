@@ -39,8 +39,6 @@ These are verified technical constraints of the Alloy Navigator platform:
 - Cumulative Time Spent sums time across Incident and its Work Orders
 - Source: https://docs.alloysoftware.com/alloynavigator/help/webportal/content/service-support-and-projects/general-tab-incident.htm
 
-**Note:** The modular-product-model-proposal.md proposes **adding** Parent-Child Incident hierarchy as a new feature.
-
 ### Express Edition: Two Ticket Types
 
 In Express, there are effectively **two types of Tickets** based on their role in hierarchy:
@@ -109,6 +107,17 @@ These assumptions are fundamental and must be reflected in all documentation:
 - Plans, editions, pricing, or licensing information
 - Predefined lifecycles or status models
 - Implementation details
+- Proposed roadmap items mixed into current-state reference documents
+
+### Current State vs. Future Changes
+
+- Reference/specification documents that describe the current product must contain only verified current behavior
+- Future changes, roadmap ideas, migration concepts, and architectural proposals must live in separate `*-proposal.md` files
+- If a proposal document needs current-state context, structure it explicitly into:
+  - **Current Product Baseline (As-Is)** — verified facts only
+  - **Proposed Future-State Changes (To-Be)** — assumptions, options, migration paths, and recommendations
+- Do not describe proposed capabilities as if they already exist
+- In current-state documents, link to proposal files only in a dedicated "Related proposals" note if absolutely necessary; do not inline proposal content into factual sections
 
 ### Writing Style
 

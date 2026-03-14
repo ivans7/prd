@@ -6,6 +6,13 @@
 
 ---
 
+## Structure of This Document
+
+- **Current Product Baseline (As-Is):** current workspace data model, visibility rules, and known limitations
+- **Proposed Future-State Changes (To-Be):** target workspace model, security changes, workflow impact, migration, and rollout options
+
+---
+
 ## Executive Summary
 
 **Текущая проблема:**
@@ -168,7 +175,9 @@ Workspace не определяет:
 
 ---
 
-## Предлагаемая модель (To-Be)
+## Proposed Future-State Changes (To-Be)
+
+### Предлагаемая модель
 
 ### Ключевой принцип
 

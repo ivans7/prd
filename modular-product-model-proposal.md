@@ -6,6 +6,13 @@
 
 ---
 
+## Document Structure
+
+- **Current Product Baseline (As-Is):** current database model, Express aliasing, and upgrade behavior today
+- **Proposed Future-State Changes (To-Be):** incident-based core, module-driven aliasing, phased rollout, and migration path
+
+---
+
 ## Executive Summary
 
 **Текущая проблема:**
@@ -137,7 +144,9 @@ Incident
 
 ---
 
-## Предлагаемое решение: Incident-Based Architecture
+## Proposed Future-State Changes (To-Be)
+
+### Incident-Based Architecture
 
 ### Концептуальная модель
 

@@ -6,6 +6,13 @@
 
 ---
 
+## Document Structure
+
+- **Current Product Baseline (As-Is):** verified behavior of Express and Enterprise today
+- **Proposed Future-State Changes (To-Be):** upgrade metadata, hidden fields, prepared workflows, migration options, and rollout plan
+
+---
+
 ## Executive Summary
 
 **Проблема:** Текущий upgrade с Express на Enterprise создаёт терминологический и концептуальный разрыв:
@@ -222,7 +229,7 @@ Incident
 
 ---
 
-## Предлагаемое решение
+## Proposed Future-State Changes (To-Be)
 
 ### Концепция
 
@@ -256,7 +263,7 @@ Incident
 
 | Поле | Тип | Express UI | Enterprise UI | Purpose |
 |------|-----|------------|---------------|---------|
-| `Service_ID` | Link | ❌ Hidden | ✓ Visible | For future ITIL classification |
+| `Service_ID` | Link | ❌ Hidden | ✓ Visible | Reserved for Enterprise visibility after upgrade |
 | `Urgency` | Classification | ❌ Hidden | ✓ Visible | Priority calculation (Enterprise) |
 | `Impact` | Classification | ❌ Hidden | ✓ Visible | Priority calculation (Enterprise) |
 
