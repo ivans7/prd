@@ -1,0 +1,3 @@
+display_name: Metrics And Experiments
+short_description: Define decision-grade metrics, guardrails, and experiment plans.
+default_prompt: Define the key metrics or experiment design for this initiative, including object or workflow scope, success criteria, guardrails, and how to interpret the results.

@@ -1,0 +1,3 @@
+display_name: PRD Spec
+short_description: Turn product decisions into buildable specs with clear workflow and edition scope.
+default_prompt: Draft or refine a product requirements document with clear scope, object and workflow impact, acceptance criteria, risks, and unresolved questions.
