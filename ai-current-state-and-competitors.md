@@ -7,7 +7,6 @@
 
 Alloy уже не находится на стартовой точке. У продукта есть рабочий AI foundation:
 - AI для end users в `Self-Service Portal`
-- AI-помощь для technicians
 - `RAG` по внутренним данным
 - object-level AI actions
 - enterprise-oriented control через permissions и настройки
@@ -34,6 +33,7 @@ Alloy уже не находится на стартовой точке. У пр
 Что это означает на практике:
 - Alloy уже покрывает базовые AI use cases для service desk.
 - Alloy особенно силен там, где важны `control`, `security` и `object-specific behavior`.
+- Полноценный `Technician Copilot / Agent Assist` внутри рабочего интерфейса еще не является частью текущего релиза; это ближайший следующий шаг.
 - Это уже enterprise-grade foundation, а не просто "чат с моделью".
 
 ## 2. Как выглядит рынок
@@ -81,7 +81,7 @@ Alloy уже не находится на стартовой точке. У пр
 | Capability | Alloy | Jira | ManageEngine | Freshservice | SysAid | Halo | InvGate |
 |---|---|---|---|---|---|---|---|
 | End-user portal assistant / virtual agent | • | • | • | • | • | • | • |
-| Technician copilot / agent assist | • | • | • | • | • | • | • |
+| Technician copilot / agent assist | In development | • | • | • | • | • | • |
 | Ticket / case summarization | • | • | • | • | • | • | • |
 | Category / triage suggestion | • | • | • | • | • | • | Partial |
 | RAG on KB | • | • | • | • | • | • | • |
@@ -98,8 +98,10 @@ Alloy уже не находится на стартовой точке. У пр
 
 Примечания:
 - `•` означает, что capability явно присутствует в продукте или официально заявлен.
+- `In development` означает, что capability уже в разработке, но еще не является частью текущего релиза.
 - `Partial` означает ограниченную, менее зрелую или косвенно подтвержденную реализацию.
 - Для Alloy строка `End-user portal assistant / virtual agent` сейчас означает AI assistant в `Self-Service Portal`, а не multi-channel coverage.
+- Для Alloy строка `Technician copilot / agent assist` отмечена как `In development`, потому что полноценный assistant внутри рабочего интерфейса запланирован на следующую версию, но еще не является текущим состоянием.
 - Для Alloy таблица основана на доступной документации и на описанных реализованных CR.
 
 ## 6. Что означают capabilities
@@ -125,7 +127,6 @@ Alloy уже не находится на стартовой точке. У пр
 Alloy уже имеет сильную базу для AI в ITSM. Его сильные стороны сегодня:
 - security-aware AI
 - object-specific AI actions
-- technician-facing assistance
 - RAG и configurability
 
 Чтобы приблизиться к лидерам и местами их обойти, Alloy нужно усиливаться не в "ещё одном чатботе", а в `operational intelligence`, `workflow-aware AI` и `asset-aware AI`.
