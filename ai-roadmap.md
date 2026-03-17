@@ -1,105 +1,110 @@
-# Alloy Navigator AI: краткий roadmap
+# Alloy Navigator AI: roadmap
 
-**Дата:** 14 марта 2026  
-**Цель:** зафиксировать реалистичный roadmap развития AI в Alloy Navigator на ближайшие 12 месяцев с учетом текущего baseline и технических ограничений платформы.
+**Goal:** define a realistic AI roadmap for Alloy Navigator based on the current product baseline and the platform's technical constraints.
 
-## Короткий вывод
+## Summary
 
-У Alloy уже есть рабочий AI foundation, поэтому roadmap должен строиться не вокруг базовых demo-функций, а вокруг расширения полезности AI для end users, technicians и service operations.
+Alloy already has a working AI foundation. The roadmap should therefore focus less on basic demo-style AI features and more on expanding practical value for end users, technicians, and service operations.
 
-Ключевое ограничение:
-- AI для генерации, редактирования и безопасного применения workflow нельзя считать ближним приоритетом.
-- Этот блок нужно ставить только после переписывания соответствующего слоя на `C#`.
+There is one critical constraint:
+- AI for workflow generation, editing, and safe execution should not be treated as a near-term priority.
+- That area should move forward only after the relevant workflow layer is rewritten in `C#`.
 
-Это меняет приоритеты: в ближайший год Alloy должен усиливаться не в `workflow editing by AI`, а в `operational intelligence`, `asset-aware grounding`, `manager insights` и `controlled action drafts`.
+This changes the priority order. In the near and mid term, Alloy should invest in:
+- operational intelligence
+- asset-aware grounding
+- manager insights
+- controlled action drafts
 
-Отдельно важно:
-- полноценный `Technician Copilot` внутри рабочего интерфейса еще не является частью текущего релиза;
-- это должен быть один из первых крупных AI milestones следующей версии.
+It is also important to note:
+- a full `Technician Copilot` inside the main work interface is not part of the current release yet;
+- it should be treated as one of the first major AI milestones in the next product version.
 
-## Принцип roadmap
+## Roadmap principles
 
-Приоритеты должны идти в таком порядке:
-- сначала `control`, `observability`, `quality`
-- затем `technician copilot`, `triage`, `portal`, `technician productivity`
-- затем `service operations intelligence`
-- затем `asset-aware AI` и `controlled actions`
-- и только после переписывания workflow-слоя на `C#` - `workflow generation / editing`
+Priorities should progress in this order:
+- `control`, `observability`, and `quality`
+- `technician copilot`, `triage`, `portal`, and `technician productivity`
+- `service operations intelligence`
+- `asset-aware AI` and `controlled actions`
+- only after the workflow layer is rewritten in `C#`: `workflow generation / editing`
 
-## Q2 2026: укрепить foundation
+## Phase 1: strengthen the foundation
 
-- Додокументировать object AI actions и текущие AI scenarios.
-- Добавить AI observability: usage, latency, cost, failure rate, feedback.
-- Ввести prompt/version control для object AI actions.
-- Усилить explainability: показывать, какие источники использованы для ответа.
-- Подготовить evaluation harness для ключевых use cases: summarize, category suggestion, next steps, change risk analysis, portal assistant.
+- Document object AI actions and the current AI scenarios clearly.
+- Add AI observability: usage, latency, cost, failure rate, and feedback.
+- Introduce prompt and version control for object AI actions.
+- Improve explainability by showing which sources were used in each response.
+- Build an evaluation harness for key use cases: summarization, category suggestion, next steps, change risk analysis, and portal assistant.
 
-**Результат:** прозрачный и управляемый AI слой, который можно безопасно масштабировать.
+**Outcome:** a transparent and controllable AI layer that can be scaled safely.
 
-## Q3 2026: выйти на parity по core service desk AI
+## Phase 2: reach parity on core service desk AI
 
-- Выпустить `Technician Copilot / Agent Assist` внутри рабочего интерфейса.
-- Assignment suggestion и priority suggestion.
-- Similar tickets / duplicate detection.
-- Улучшение SSP assistant: follow-up questions, KB-first guidance, draft ticket creation.
-- Генерация draft KB article из resolution.
-- Similar case recommendations для technicians.
+- Deliver `Technician Copilot / Agent Assist` inside the main work interface.
+- Add assignment suggestion and priority suggestion.
+- Add similar ticket and duplicate detection.
+- Improve the SSP assistant with follow-up questions, KB-first guidance, and draft ticket creation.
+- Generate draft KB articles from ticket resolutions.
+- Add similar case recommendations for technicians.
 
-**Результат:** Alloy получает полноценный technician-facing AI layer и закрывает основные пробелы относительно Freshservice, SysAid и InvGate по core service desk AI.
+**Outcome:** Alloy gains a full technician-facing AI layer and closes the main gaps versus Freshservice, SysAid, and InvGate on core service desk AI.
 
-## Q4 2026: перейти к service operations intelligence
+## Phase 3: expand into service operations intelligence
 
-- Incident clustering и problem candidate detection.
-- SLA breach risk prediction.
-- Расширенный risk analysis для Change Requests.
-- Manager copilot для аналитики по backlog, SLA, categories, KB gaps и trends.
-- Recommendations по escalation и reassignment для tickets at risk.
+- Add incident clustering and problem candidate detection.
+- Add SLA breach risk prediction.
+- Expand risk analysis for Change Requests.
+- Add a manager copilot for backlog, SLA, category, trend, and KB gap analysis.
+- Add escalation and reassignment recommendations for tickets at risk.
 
-**Результат:** сокращение отрыва от Jira, ManageEngine и Halo по operational AI.
+**Outcome:** Alloy reduces the gap versus Jira, ManageEngine, and Halo on operational AI.
 
-## Q1 2027: создать differentiators без зависимости от workflow rewrite
+## Phase 4: build differentiators without depending on workflow rewrite
 
-- Расширить grounding за пределы incidents и KB:
+- Expand grounding beyond incidents and KB to include:
   - assets / CI
   - software
   - contracts
   - vendors
   - locations
   - change history
-- Добавить asset-aware AI suggestions для technicians и change managers.
-- Добавить controlled action layer в формате draft-only:
+- Add asset-aware AI suggestions for technicians and change managers.
+- Add a controlled action layer in draft-only mode:
   - draft field updates
   - draft child work orders
   - draft change tasks
   - draft requester responses
-  - только с human approval
-- Добавить AI explanation для существующей automation logic:
+  - human approval required
+- Add AI explanations for existing automation logic:
   - explain current rule behavior
-  - explain why record was routed this way
-  - identify possible overlap/conflict between existing rules
+  - explain why a record was routed a certain way
+  - identify possible overlap or conflict between existing rules
 
-**Результат:** Alloy получает зоны возможного превосходства без зависимости от переписывания workflow слоя.
+**Outcome:** Alloy gains areas of potential differentiation without depending on workflow layer rework.
 
-## Post C# Rewrite: workflow-aware AI
+## Phase 5: workflow-aware AI after the C# rewrite
 
-Этот блок должен идти отдельной фазой после переписывания workflow-слоя на `C#`.
+This should be treated as a separate phase after the workflow layer is rewritten in `C#`.
 
-Только после этого имеет смысл делать:
+Only then does it make sense to add:
 - draft business rule creation from natural language
 - AI-assisted workflow editing
 - AI-assisted automation generation
 - simulation and validation of generated workflow changes
 - safe application of workflow changes with approval and audit trail
 
-**Результат:** workflow-aware AI будет строиться на поддерживаемом и безопасном техническом основании, а не на legacy-слое.
+**Outcome:** workflow-aware AI is built on a maintainable and safe technical foundation rather than on the legacy workflow layer.
 
-## Рекомендуемый стратегический фокус
+## Strategic focus
 
-Наиболее реалистичные и сильные differentiators Alloy на ближайший период:
-- **Secure AI by design**: permission-aware retrieval и enterprise control.
-- **Technician productivity AI**: technician copilot, object-specific AI actions, similar cases, better triage, better summaries.
-- **Operational intelligence**: clustering, SLA risk, manager insights.
-- **Asset-aware AI**: рекомендации с учетом operational context, а не только текста тикета.
-- **Explainable AI**: понятные источники и логика рекомендаций.
+The most realistic and valuable Alloy differentiators in the near and mid term are:
+- **Secure AI by design**: permission-aware retrieval and enterprise control.
+- **Technician productivity AI**: technician copilot, object-specific AI actions, similar cases, better triage, and better summaries.
+- **Operational intelligence**: clustering, SLA risk, and manager insights.
+- **Asset-aware AI**: recommendations based on operational context, not just ticket text.
+- **Explainable AI**: clear sources and understandable reasoning behind AI suggestions.
 
-Рекомендация: не строить ближайший roadmap вокруг workflow authoring by AI. До переписывания слоя на `C#` это будет дорогой и рискованный путь. В ближайший горизонт выгоднее усиливать те AI-возможности, которые уже опираются на существующую data model, RAG, permissions и object actions.
+## Recommendation
+
+The roadmap should not revolve around AI-based workflow authoring in the near term. Until the relevant layer is rewritten in `C#`, that path will remain expensive and risky. In the meantime, Alloy should focus on AI capabilities that already align well with the existing data model, RAG layer, permissions model, and object actions.
